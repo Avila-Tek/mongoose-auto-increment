@@ -1,0 +1,66 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --detectOpenHandles",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "avilatek-mongoose-autoincrement",
+  "author": "Jose Roberto Quevedo Gabizon",
+  "module": "dist/avilatek-mongoose-autoincrement.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/avilatek-mongoose-autoincrement.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/avilatek-mongoose-autoincrement.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.1.0",
+    "@types/extend": "^3.0.1",
+    "husky": "^8.0.2",
+    "mongodb-memory-server": "^8.9.5",
+    "mongoose": "^6.7.2",
+    "size-limit": "^8.1.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.1",
+    "typescript": "^3.9.10"
+  },
+  "dependencies": {
+    "extend": "^3.0.2"
+  },
+  "peerDependencies": {
+    "mongoose": ">=5.0.0 || >= 6.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
