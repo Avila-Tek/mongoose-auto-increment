@@ -118,7 +118,7 @@ export function plugin<T = any>(schema: mongoose.Schema<T>, options: any) {
   );
 
   // Declare a function to get the next counter for the model/schema.
-  const nextCount = function(
+  function nextCount(
     callback: (err: mongoose.CallbackError, count?: number) => void
   ) {
     IdentityCounter!.findOne(
@@ -142,13 +142,13 @@ export function plugin<T = any>(schema: mongoose.Schema<T>, options: any) {
         );
       }
     );
-  };
+  }
   // Add nextCount as both a method on documents and a static on the schema for convenience.
   schema.method('nextCount', nextCount);
   schema.static('nextCount', nextCount);
 
   // Declare a function to reset counter at the start value - increment value.
-  var resetCount = function(
+  function resetCount(
     callback: (err: mongoose.CallbackError, count?: number) => void
   ) {
     IdentityCounter!.findOneAndUpdate(
@@ -160,7 +160,7 @@ export function plugin<T = any>(schema: mongoose.Schema<T>, options: any) {
         callback(null, settings.startAt);
       }
     );
-  };
+  }
   // Add resetCount as both a method on documents and a static on the schema for convenience.
   schema.method('resetCount', resetCount);
   schema.static('resetCount', resetCount);
