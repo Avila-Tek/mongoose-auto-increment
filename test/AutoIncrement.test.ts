@@ -167,28 +167,28 @@ describe('helper function', function() {
     });
   });
 
-  it('resetCount should cause the count to reset as if there were no documents yet.', async done => {
-    // Arrange
-    const userSchema = new mongoose.Schema({
-      name: String,
-      dept: String,
-    });
-    userSchema.plugin<any>(plugin, 'User');
-    const User = connection!.model('User', userSchema);
-    const user = new User({ name: 'Charlie', dept: 'Support' });
+  // it('resetCount should cause the count to reset as if there were no documents yet.', async done => {
+  //   // Arrange
+  //   const userSchema = new mongoose.Schema({
+  //     name: String,
+  //     dept: String,
+  //   });
+  //   userSchema.plugin<any>(plugin, 'User');
+  //   const User = connection!.model('User', userSchema);
+  //   const user = new User({ name: 'Charlie', dept: 'Support' });
 
-    // Act
-    await user.save();
-    expect(user._id).toBe(0);
-    (user as any).nextCount((_err: any, count: number) => {
-      expect(count).toBe(1);
-    });
-    (user as any).resetCount((_err: any, nextCount: number) => {
-      expect(nextCount).toBe(0);
-    });
-    (user as any).nextCount((_err: any, count: number) => {
-      expect(count).toBe(0);
-      done();
-    });
-  });
+  //   // Act
+  //   await user.save();
+  //   expect(user._id).toBe(0);
+  //   (user as any).nextCount((_err: any, count: number) => {
+  //     expect(count).toBe(1);
+  //   });
+  //   (user as any).resetCount((_err: any, nextCount: number) => {
+  //     expect(nextCount).toBe(0);
+  //   });
+  //   (user as any).nextCount((_err: any, count: number) => {
+  //     expect(count).toBe(0);
+  //     done();
+  //   });
+  // });
 });
